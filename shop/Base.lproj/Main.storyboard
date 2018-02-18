@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lGy-Mi-gT3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cPj-77-il3">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -152,6 +152,70 @@
             </objects>
             <point key="canvasLocation" x="3085" y="260"/>
         </scene>
+        <!--Detail Product View Controller-->
+        <scene sceneID="JVQ-6y-Kja">
+            <objects>
+                <viewController id="cPj-77-il3" customClass="DetailProductViewController" customModule="shop" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="F9c-41-gwe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meat" translatesAutoresizingMaskIntoConstraints="NO" id="UEx-IM-YWz">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="247"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="247" id="SsT-SE-fsp"/>
+                                </constraints>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vEy-eZ-2gk">
+                                <rect key="frame" x="0.0" y="246" width="320" height="269"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="kqW-Nh-KJW" customClass="DetailProductTableViewCell" customModule="shop" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kqW-Nh-KJW" id="nFM-Ff-Lji">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uQ-OT-kEl">
+                                                    <rect key="frame" x="15" y="11" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bf1-yb-ozG">
+                                <rect key="frame" x="16" y="523" width="288" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <state key="normal" title="Заказать"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UEx-IM-YWz" firstAttribute="trailing" secondItem="iL5-VM-Oug" secondAttribute="trailing" id="8YG-8g-bpk"/>
+                            <constraint firstItem="Bf1-yb-ozG" firstAttribute="leading" secondItem="iL5-VM-Oug" secondAttribute="leading" constant="16" id="BrP-EZ-VfS"/>
+                            <constraint firstItem="UEx-IM-YWz" firstAttribute="leading" secondItem="iL5-VM-Oug" secondAttribute="leading" id="CbW-rP-tTo"/>
+                            <constraint firstItem="vEy-eZ-2gk" firstAttribute="bottom" secondItem="iL5-VM-Oug" secondAttribute="bottom" constant="-53" id="EcS-BN-c4e"/>
+                            <constraint firstItem="vEy-eZ-2gk" firstAttribute="trailing" secondItem="iL5-VM-Oug" secondAttribute="trailing" id="PMK-FK-enV"/>
+                            <constraint firstItem="Bf1-yb-ozG" firstAttribute="bottom" secondItem="iL5-VM-Oug" secondAttribute="bottom" id="Q6j-Lr-kFX"/>
+                            <constraint firstItem="UEx-IM-YWz" firstAttribute="top" secondItem="F9c-41-gwe" secondAttribute="top" id="QZa-0v-fiO"/>
+                            <constraint firstItem="iL5-VM-Oug" firstAttribute="trailing" secondItem="Bf1-yb-ozG" secondAttribute="trailing" constant="16" id="V4Q-0o-69t"/>
+                            <constraint firstItem="vEy-eZ-2gk" firstAttribute="top" secondItem="UEx-IM-YWz" secondAttribute="bottom" constant="-1" id="WLb-4A-WUK"/>
+                            <constraint firstItem="Bf1-yb-ozG" firstAttribute="top" secondItem="vEy-eZ-2gk" secondAttribute="bottom" constant="8" id="miy-ww-hKq"/>
+                            <constraint firstItem="vEy-eZ-2gk" firstAttribute="leading" secondItem="iL5-VM-Oug" secondAttribute="leading" id="zlo-3o-sU6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="iL5-VM-Oug"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qqS-9Y-Jvy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3909.375" y="235.56338028169014"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="Te1-qn-7o9">
             <objects>
@@ -191,4 +255,7 @@
             <point key="canvasLocation" x="-116" y="72"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="meat" width="1987" height="1391"/>
+    </resources>
 </document>

@@ -59,6 +59,29 @@ class ListProductCollectionViewController: UICollectionViewController {
     
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            let vc = storyboard?.instantiateViewController(withIdentifier: "DetailProductVC") as! DetailProductViewController
+            //vc.detailImage = listImage[indexPath.row]
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            let vc = storyboard?.instantiateViewController(withIdentifier: "ListProductVC") as! ListProductCollectionViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 2:
+            let vc = storyboard?.instantiateViewController(withIdentifier: "index1VC")
+            self.navigationController?.pushViewController(vc!, animated: true)
+        case 3:
+            let vc = storyboard?.instantiateViewController(withIdentifier: "index1VC")
+            self.navigationController?.pushViewController(vc!, animated: true)
+            
+        default:
+            break
+        }
+        collectionView.deselectItem(at: indexPath, animated: true)
+        //collectionView.deselectRow(at: indexPath, animated: true)
+    }
 
     // MARK: UICollectionViewDelegate
 
