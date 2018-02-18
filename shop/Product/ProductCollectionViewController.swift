@@ -11,23 +11,22 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class ProductCollectionViewController: UICollectionViewController {
-    var titleName = ""
-    
-    
+    var titlevare = ""
+    let listFishImage = [#imageLiteral(resourceName: "fish2"), #imageLiteral(resourceName: "fish3"), #imageLiteral(resourceName: "fish4"), #imageLiteral(resourceName: "fish")]
+    let listMeetImage = [#imageLiteral(resourceName: "meat2"), #imageLiteral(resourceName: "colectionMenu02"), #imageLiteral(resourceName: "meat3"), #imageLiteral(resourceName: "kurica")]
+
+
     let imageProduct = [#imageLiteral(resourceName: "meat"), #imageLiteral(resourceName: "colectionMenu01"), #imageLiteral(resourceName: "makarony"), #imageLiteral(resourceName: "caneds"), #imageLiteral(resourceName: "pripravy"), #imageLiteral(resourceName: "produce"), #imageLiteral(resourceName: "yagoda"), #imageLiteral(resourceName: "egg"), #imageLiteral(resourceName: "bread"), #imageLiteral(resourceName: "milc"), #imageLiteral(resourceName: "krupa"), #imageLiteral(resourceName: "fruit")]
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = titleName
+        //title = titlevare
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
+        
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
-        // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,26 +34,16 @@ class ProductCollectionViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        
         return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
+        
         return imageProduct.count
     }
 
@@ -91,6 +80,30 @@ class ProductCollectionViewController: UICollectionViewController {
         }
     
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            let vc = storyboard?.instantiateViewController(withIdentifier: "ListProductVC") as! ListProductCollectionViewController
+            vc.listImage = listMeetImage
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            let vc = storyboard?.instantiateViewController(withIdentifier: "ListProductVC") as! ListProductCollectionViewController
+            vc.listImage = listFishImage
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 2:
+            let vc = storyboard?.instantiateViewController(withIdentifier: "index1VC")
+            self.navigationController?.pushViewController(vc!, animated: true)
+        case 3:
+            let vc = storyboard?.instantiateViewController(withIdentifier: "index1VC")
+            self.navigationController?.pushViewController(vc!, animated: true)
+        
+        default:
+            break
+        }
+        collectionView.deselectItem(at: indexPath, animated: true)
+        //collectionView.deselectRow(at: indexPath, animated: true)
     }
 
     // MARK: UICollectionViewDelegate

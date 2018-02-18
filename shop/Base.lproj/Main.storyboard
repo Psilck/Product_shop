@@ -93,28 +93,6 @@
                                     <outlet property="imageProduct" destination="ze4-kg-NVH" id="0iV-p0-uKg"/>
                                 </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell2" id="a5G-87-6Np" customClass="ProductCollectionViewCell" customModule="shop" customModuleProvider="target">
-                                <rect key="frame" x="66" y="198" width="188" height="188"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="188" height="188"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ug0-ld-Sdo">
-                                            <rect key="frame" x="0.0" y="0.0" width="188" height="188"/>
-                                        </imageView>
-                                    </subviews>
-                                </view>
-                                <constraints>
-                                    <constraint firstItem="ug0-ld-Sdo" firstAttribute="top" secondItem="a5G-87-6Np" secondAttribute="top" id="4Pd-ob-kGm"/>
-                                    <constraint firstAttribute="trailing" secondItem="ug0-ld-Sdo" secondAttribute="trailing" id="8KC-yE-Cgz"/>
-                                    <constraint firstAttribute="bottom" secondItem="ug0-ld-Sdo" secondAttribute="bottom" id="xBl-d5-NTc"/>
-                                    <constraint firstItem="ug0-ld-Sdo" firstAttribute="leading" secondItem="a5G-87-6Np" secondAttribute="leading" id="zmt-ea-MzL"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="imageProduct" destination="ug0-ld-Sdo" id="sMd-aV-536"/>
-                                </connections>
-                            </collectionViewCell>
                         </cells>
                         <connections>
                             <outlet property="dataSource" destination="H7F-72-wWJ" id="xmd-Wl-hOI"/>
@@ -126,10 +104,10 @@
             </objects>
             <point key="canvasLocation" x="1910.144927536232" y="277.98913043478262"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--List Product Collection View Controller-->
         <scene sceneID="Nyz-9m-1e3">
             <objects>
-                <collectionViewController id="VyT-dn-C8x" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="ListProductVC" id="VyT-dn-C8x" customClass="ListProductCollectionViewController" customModule="shop" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="e6b-tw-Cv6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -141,7 +119,7 @@
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="WJS-ed-iY8">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="WJS-ed-iY8" customClass="ListProductCollectionViewCell" customModule="shop" customModuleProvider="target">
                                 <rect key="frame" x="66" y="10" width="188" height="188"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -159,6 +137,9 @@
                                     <constraint firstAttribute="trailing" secondItem="H7j-td-BAr" secondAttribute="trailing" id="aBk-h7-VWS"/>
                                     <constraint firstAttribute="bottom" secondItem="H7j-td-BAr" secondAttribute="bottom" id="iKM-vR-QdR"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="listImage" destination="H7j-td-BAr" id="IST-xL-mDD"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>

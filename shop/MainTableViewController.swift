@@ -97,7 +97,7 @@ class MainTableViewController: UITableViewController {
             self.navigationController?.pushViewController(vc!, animated: true)
         case 1:
             let vc = storyboard?.instantiateViewController(withIdentifier: "index2VC") as! ProductCollectionViewController
-            vc.titleName = "Продуктовый отдел"
+            //vc.titleName = "Продуктовый отдел"
             self.navigationController?.pushViewController(vc, animated: true)
         case 2:
             let vc = storyboard?.instantiateViewController(withIdentifier: "index1VC")
