@@ -10,9 +10,22 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var textViewTest = UITextView()
+
+    @IBOutlet weak var labelTest: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        
+        
+        textViewTest.frame = CGRect(x: 150, y: 200, width: 150, height: 20)
+        view.addSubview(textViewTest)
+        
+        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +33,12 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func leftButton(_ sender: UIButton) {
+        
+        
+    }
+    @IBAction func rightButton(_ sender: UIButton) {
+    }
+    
 }
 

@@ -10,10 +10,34 @@ import UIKit
 
 class DetailProductViewController: UIViewController {
 
+    var nameProductDetail = ""
+    var detailProductDetail = ""
+    var cenaDetail = 0
+    var typeDetail = ""
+    var imageDelail = UIImage()
+    
+    
+    
+    
+    @IBOutlet weak var imageDetail: UIImageView!
+    @IBOutlet weak var nameDetail: UILabel!
+    @IBOutlet weak var detailProduct: UILabel!
+    @IBOutlet weak var typeCenaDetail: UILabel!
+    @IBOutlet weak var sumDetail: UILabel!
+    @IBOutlet weak var typeProduct: UILabel!
+    @IBOutlet weak var sumProduct: UILabel!
+    @IBOutlet weak var totalSumProduct: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        nameDetail.text = nameProductDetail
+        detailProduct.text = detailProductDetail
+        typeProduct.text = typeDetail
+        sumProduct.text = String(cenaDetail)
+        typeCenaDetail.text = typeDetail
+        sumDetail.text = "1"
+        totalSumProduct.text = String(cenaDetail)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,15 +45,15 @@ class DetailProductViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func plusMinus(_ sender: UIStepper) {
+        let plus = sender.value
+        print(plus)
+        let text = String(plus)
+        var totalText = text.components(separatedBy: ".")
+        sumDetail.text = totalText[0]
+        
+        
     }
-    */
-
+    
+    
 }

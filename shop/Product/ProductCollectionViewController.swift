@@ -17,6 +17,8 @@ class ProductCollectionViewController: UICollectionViewController {
 
 
     let imageProduct = [#imageLiteral(resourceName: "meat"), #imageLiteral(resourceName: "colectionMenu01"), #imageLiteral(resourceName: "makarony"), #imageLiteral(resourceName: "caneds"), #imageLiteral(resourceName: "pripravy"), #imageLiteral(resourceName: "produce"), #imageLiteral(resourceName: "yagoda"), #imageLiteral(resourceName: "egg"), #imageLiteral(resourceName: "bread"), #imageLiteral(resourceName: "milc"), #imageLiteral(resourceName: "krupa"), #imageLiteral(resourceName: "fruit")]
+    var restaurants = [name: "Ogonёk Grill&Bar", type: "ресторан", location: "Уфа, Панфиловский проспект дом 1544 кв 7", image: "ogonek.jpg", isVisited: false]
+    
     
 
     override func viewDidLoad() {
