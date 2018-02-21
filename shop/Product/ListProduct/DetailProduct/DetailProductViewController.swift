@@ -12,7 +12,7 @@ class DetailProductViewController: UIViewController {
 
     var nameProductDetail = ""
     var detailProductDetail = ""
-    var cenaDetail = 0
+    var cenaDetail = 301
     var typeDetail = ""
     var imageDelail = UIImage()
     
@@ -51,6 +51,9 @@ class DetailProductViewController: UIViewController {
         let text = String(plus)
         var totalText = text.components(separatedBy: ".")
         sumDetail.text = totalText[0]
+        let totalSum = String(cenaDetail * Int(totalText[0])!)
+        totalSumProduct.text = totalSum
+        print(totalSum)
         
         
     }
