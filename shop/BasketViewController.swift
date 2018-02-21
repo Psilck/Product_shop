@@ -7,24 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class BasketViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    struct Basket {
-        let name: String
-        let productInfo: String
-        let sumProduct: String
-        let image: UIImage
-        
-        init(name: String, productInfo: String, sumProduct: String, image: UIImage) {
-            self.name = name
-            self.productInfo = productInfo
-            self.sumProduct = sumProduct
-            self.image = image
-        }
-    }
     
-    var basket = [Basket]()
+    
+    var basket: [BasketProduct] = []
     
 
     override func viewDidLoad() {
@@ -38,6 +27,19 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+        //(UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
+        //let listBasketSaveData = BasketProduct(context: context!)
+        
+        let fethRequest: NSFetchRequest<BasketProduct> = BasketProduct.fetchRequest()
+        do {
+            basket = (try context?.fetch(fethRequest))!
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return basket.count
@@ -49,7 +51,9 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
         
         let indexProduct = basket[indexPath.row]
         
-        cell.imageBasket.image = nil
+        cell.imageBasket.image = UIImage(data: indexProduct.image! as Data)
+        cell.infoProductBasket.text = indexProduct.productInfo
+        cell.sumProductBasket.text = String(indexProduct.sumProduct)
         
         
         return cell

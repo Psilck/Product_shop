@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailProductViewController: UIViewController {
 
-    var nameProductDetail = ""
-    var detailProductDetail = ""
+    var nameProductDetail = "123"
+    var detailProductDetail = "1234"
     var cenaDetail = 105
-    var typeDetail = ""
-    var imageDelail = UIImage()
+    var typeDetail = "kg"
+    var imageDelail = #imageLiteral(resourceName: "fish")
     
     
     
@@ -39,6 +40,29 @@ class DetailProductViewController: UIViewController {
         totalSumProduct.text = String(cenaDetail)
         
     }
+    
+    func saveDataCoreData() {
+        let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+            //(UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
+        let basketSaveData = BasketProduct(context: context!)
+            basketSaveData.name = nameDetail.text
+        basketSaveData.productInfo = detailProductDetail
+        basketSaveData.sumProduct = Int16(totalSumProduct.text!)!
+        if let image = imageDetail.image {
+            basketSaveData.image = UIImageJPEGRepresentation(image, 0) as Data?
+            //UIImagePNGRepresentation(image) as NSData?
+        }
+        //= nameTextField.text
+//            if let image = imageView.image {
+//                restaurant.image = UIImagePNGRepresentation(image) as NSData?
+            do {
+                try context?.save()
+                print("save complete")
+            } catch let error as NSError {
+                print("Не удалось сохранить данные \(error), \(error.userInfo)")
+            }
+        }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -58,5 +82,8 @@ class DetailProductViewController: UIViewController {
         
     }
     
+    @IBAction func saveDataBasket(_ sender: UIButton) {
+        saveDataCoreData()
+    }
     
 }
