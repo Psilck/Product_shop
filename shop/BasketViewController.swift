@@ -19,19 +19,11 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
-        //(UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
-        //let listBasketSaveData = BasketProduct(context: context!)
-        
         let fethRequest: NSFetchRequest<BasketProduct> = BasketProduct.fetchRequest()
         do {
             basket = (try context?.fetch(fethRequest))!
@@ -50,8 +42,6 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BasketTableViewCell
         
         let indexProduct = basket[indexPath.row]
-        
-        cell.imageBasket.image = UIImage(data: indexProduct.image! as Data)
         cell.infoProductBasket.text = indexProduct.productInfo
         cell.sumProductBasket.text = String(indexProduct.sumProduct)
         

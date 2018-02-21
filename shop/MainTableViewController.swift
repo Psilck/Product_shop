@@ -11,30 +11,18 @@ import UIKit
 class MainTableViewController: UITableViewController {
     
     let productCell = [""]
-    
-    // var tableView: UITabvariew!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         tableView.estimatedRowHeight = 85
-        //tableView.rowHeight = UITableViewAutomaticDimension
-    
-        
     }
 
-   
-
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 9
+       return 9
     }
 
     
@@ -97,7 +85,6 @@ class MainTableViewController: UITableViewController {
             self.navigationController?.pushViewController(vc!, animated: true)
         case 1:
             let vc = storyboard?.instantiateViewController(withIdentifier: "index2VC") as! ProductCollectionViewController
-            //vc.titleName = "Продуктовый отдел"
             self.navigationController?.pushViewController(vc, animated: true)
         case 2:
             let vc = storyboard?.instantiateViewController(withIdentifier: "index1VC")

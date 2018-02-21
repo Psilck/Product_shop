@@ -11,14 +11,13 @@ import CoreData
 
 class DetailProductViewController: UIViewController {
 
-    var nameProductDetail = "123"
-    var detailProductDetail = "1234"
+    var nameProductDetail = "Name product"
+    var detailProductDetail = "Product detail info"
     var cenaDetail = 105
     var typeDetail = "kg"
     var imageDelail = #imageLiteral(resourceName: "fish")
     
-    
-    
+    @IBOutlet weak var steperOutlet: UIStepper!
     
     @IBOutlet weak var imageDetail: UIImageView!
     @IBOutlet weak var nameDetail: UILabel!
@@ -31,6 +30,12 @@ class DetailProductViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        steperOutlet.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        steperOutlet.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        //steperOutlet
+            //= #imageLiteral(resourceName: "fish")
+        
         nameDetail.text = nameProductDetail
         detailProduct.text = detailProductDetail
         typeProduct.text = typeDetail
@@ -43,18 +48,10 @@ class DetailProductViewController: UIViewController {
     
     func saveDataCoreData() {
         let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
-            //(UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
         let basketSaveData = BasketProduct(context: context!)
             basketSaveData.name = nameDetail.text
         basketSaveData.productInfo = detailProductDetail
         basketSaveData.sumProduct = Int16(totalSumProduct.text!)!
-        if let image = imageDetail.image {
-            basketSaveData.image = UIImageJPEGRepresentation(image, 0) as Data?
-            //UIImagePNGRepresentation(image) as NSData?
-        }
-        //= nameTextField.text
-//            if let image = imageView.image {
-//                restaurant.image = UIImagePNGRepresentation(image) as NSData?
             do {
                 try context?.save()
                 print("save complete")
@@ -64,11 +61,6 @@ class DetailProductViewController: UIViewController {
         }
     
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @IBAction func plusMinus(_ sender: UIStepper) {
         let plus = sender.value
         print(plus)
