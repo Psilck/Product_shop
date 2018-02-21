@@ -12,7 +12,7 @@ class DetailProductViewController: UIViewController {
 
     var nameProductDetail = ""
     var detailProductDetail = ""
-    var cenaDetail = 301
+    var cenaDetail = 105
     var typeDetail = ""
     var imageDelail = UIImage()
     
