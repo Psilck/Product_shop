@@ -9,17 +9,24 @@
 import UIKit
 import CoreData
 
-class BasketViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class BasketViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
+
     
     
+    var fetchResultsController = NSFetchedResultsController<BasketProduct>()
     
     var basket: [BasketProduct] = []
-    
+    var sumIndexProduct = [Int]()
+    var totall = 0
+    var summIndex = 0
 
+    @IBOutlet weak var totalSumProduct: UILabel!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,9 +34,12 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
         let fethRequest: NSFetchRequest<BasketProduct> = BasketProduct.fetchRequest()
         do {
             basket = (try context?.fetch(fethRequest))!
+
+            
         } catch {
             print(error.localizedDescription)
         }
+        
     }
     
 
@@ -46,7 +56,48 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
         cell.sumProductBasket.text = String(indexProduct.sumProduct)
         
         
+        let per = indexProduct.sumProduct
+        sumIndexProduct = [Int(per)]
+        
+        
+        
+        for (_, sum) in sumIndexProduct.enumerated() {
+            totall += Int(truncating: sum as NSNumber)
+            print(totall)
+        }
+        summIndex = totall
+        totalSumProduct.text = String(summIndex)
+        
         return cell
     }
+    
+    
+     // Override to support conditional editing of the table view.
+      func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+ 
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+        if editingStyle == .delete {
 
+            context?.delete(basket[indexPath.row])
+            (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+            
+            do {
+                basket = (try context?.fetch(BasketProduct.fetchRequest()))!
+            } catch {
+                print(error.localizedDescription)
+            }
+            tableView.reloadData()
+            totall = 0
+            
+            
+        }
+    }
+
+    @IBAction func completedProductBasket(_ sender: UIButton) {
+    }
 }

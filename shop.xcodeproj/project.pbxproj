@@ -21,6 +21,7 @@
 		C83FD1C82035F3EA00241A0D /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83FD1C72035F3EA00241A0D /* MainTableViewCell.swift */; };
 		C83FD1CA2036093300241A0D /* ProductCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83FD1C92036093300241A0D /* ProductCollectionViewController.swift */; };
 		C83FD1CC2036094300241A0D /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83FD1CB2036094300241A0D /* ProductCollectionViewCell.swift */; };
+		C8CC6C0320417523008786B8 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CC6C0220417523008786B8 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		C83FD1C72035F3EA00241A0D /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		C83FD1C92036093300241A0D /* ProductCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewController.swift; sourceTree = "<group>"; };
 		C83FD1CB2036094300241A0D /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		C8CC6C0220417523008786B8 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				C83FD1BC2035F08200241A0D /* LaunchScreen.storyboard */,
 				C83FD1BF2035F08200241A0D /* Info.plist */,
 				C815BB57203D59CA00B4E663 /* BasketViewController.swift */,
+				C8CC6C0220417523008786B8 /* TableViewController.swift */,
 				C815BB59203D59DC00B4E663 /* BasketTableViewCell.swift */,
 				C83FD1B72035F08200241A0D /* shop.xcdatamodeld */,
 			);
@@ -194,6 +197,7 @@
 				C83FD1B92035F08200241A0D /* shop.xcdatamodeld in Sources */,
 				C815BB58203D59CA00B4E663 /* BasketViewController.swift in Sources */,
 				C82C844E20399D5400DD0586 /* ListProductCollectionViewController.swift in Sources */,
+				C8CC6C0320417523008786B8 /* TableViewController.swift in Sources */,
 				C83FD1B12035F08200241A0D /* AppDelegate.swift in Sources */,
 				C83FD1CA2036093300241A0D /* ProductCollectionViewController.swift in Sources */,
 				C82C84582039AA5C00DD0586 /* DetailProductViewController.swift in Sources */,
