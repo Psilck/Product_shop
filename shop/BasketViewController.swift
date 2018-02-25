@@ -27,6 +27,7 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,14 +37,33 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
             basket = (try context?.fetch(fethRequest))!
 
             
+            
+            
+            
         } catch {
             print(error.localizedDescription)
         }
         
     }
     
+   
+    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var one = 0
+        var two = [Int]()
+        for sum in 0..<basket.count {
+             one = sum
+            }
+        for i in 0...one {
+            let indexProd = basket[i].sumProduct
+            two.append(Int(indexProd))
+        }
+        
+        totall = two.reduce(0, {$0 + $1})
+            summIndex = totall
+            totalSumProduct.text = String(summIndex)
+        
         return basket.count
     }
     
@@ -54,19 +74,9 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
         let indexProduct = basket[indexPath.row]
         cell.infoProductBasket.text = indexProduct.productInfo
         cell.sumProductBasket.text = String(indexProduct.sumProduct)
+
         
         
-        let per = indexProduct.sumProduct
-        sumIndexProduct = [Int(per)]
-        
-        
-        
-        for (_, sum) in sumIndexProduct.enumerated() {
-            totall += Int(truncating: sum as NSNumber)
-            print(totall)
-        }
-        summIndex = totall
-        totalSumProduct.text = String(summIndex)
         
         return cell
     }
