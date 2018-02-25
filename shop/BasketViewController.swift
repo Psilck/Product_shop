@@ -43,6 +43,7 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
         } catch {
             print(error.localizedDescription)
         }
+        totalSumProductLabel()
         
     }
     
@@ -50,21 +51,36 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var one = 0
-        var two = [Int]()
-        for sum in 0..<basket.count {
-             one = sum
-            }
-        for i in 0...one {
-            let indexProd = basket[i].sumProduct
-            two.append(Int(indexProd))
-        }
         
-        totall = two.reduce(0, {$0 + $1})
-            summIndex = totall
-            totalSumProduct.text = String(summIndex)
         
         return basket.count
+    }
+    
+    func totalSumProductLabel() {
+        var sumElement = 0
+        var elementArray = [Int]()
+        
+        // Получаем количество элементов в корзине
+        // Добавил условие на проверку количества элементов
+        if basket.count == 0 {
+            print("break")
+        } else {
+            for sum in 0..<basket.count {
+                sumElement = sum
+            }
+            
+            // Добавляем в массив все суммы продуктов
+            for indexElement in 0...sumElement {
+                let indexProd = basket[indexElement].sumProduct
+                elementArray.append(Int(indexProd))
+            }
+        }
+        // Считаем итоговую сумму
+        totall = elementArray.reduce(0, {$0 + $1})
+        summIndex = totall
+        
+        // Присвоение Label общую сумму
+        totalSumProduct.text = String(summIndex)
     }
     
         
@@ -102,7 +118,7 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
                 print(error.localizedDescription)
             }
             tableView.reloadData()
-            totall = 0
+            totalSumProductLabel()
             
             
         }
