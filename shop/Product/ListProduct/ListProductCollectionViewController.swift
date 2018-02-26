@@ -13,6 +13,10 @@ private let reuseIdentifier = "Cell"
 class ListProductCollectionViewController: UICollectionViewController {
 
     var listImage = [UIImage]()
+    var listName = [String]()
+    var listInfo = [String]()
+    var listType = [String]()
+    var listSum = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,29 +36,26 @@ class ListProductCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ListProductCollectionViewCell
     
+        //let image = listImage["image"]
         cell.listImage.image = listImage[indexPath.row]
     
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            let vc = storyboard?.instantiateViewController(withIdentifier: "DetailProductVC") as! DetailProductViewController
-            self.navigationController?.pushViewController(vc, animated: true)
-        case 1:
-            let vc = storyboard?.instantiateViewController(withIdentifier: "ListProductVC") as! ListProductCollectionViewController
-            self.navigationController?.pushViewController(vc, animated: true)
-        case 2:
-            let vc = storyboard?.instantiateViewController(withIdentifier: "index1VC")
-            self.navigationController?.pushViewController(vc!, animated: true)
-        case 3:
-            let vc = storyboard?.instantiateViewController(withIdentifier: "index1VC")
-            self.navigationController?.pushViewController(vc!, animated: true)
-            
-        default:
-            break
-        }
+        
+        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "DetailProductVC") as! DetailProductViewController
+        vc.delailImage = listImage[indexPath.row] 
+        vc.detailName = listName[indexPath.row]
+        vc.detailProductInfo = listInfo[indexPath.row]
+        vc.detailType = listType[indexPath.row]
+        vc.detailSum = listSum[indexPath.row]
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+
+        
         collectionView.deselectItem(at: indexPath, animated: true)
           }
     

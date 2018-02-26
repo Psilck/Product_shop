@@ -22,11 +22,13 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
 
     @IBOutlet weak var totalSumProduct: UILabel!
     
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noBasket: UIImageView!
+    @IBOutlet weak var noBasketLabel: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
     }
     
@@ -44,6 +46,17 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
             print(error.localizedDescription)
         }
         totalSumProductLabel()
+        noBasket.isHidden = true
+        noBasketLabel.isHidden = true
+        if basket.count <= 0 {
+            tableView.isHidden = true
+            noBasket.isHidden = false
+            noBasketLabel.isHidden = false
+        } else {
+            noBasket.isHidden = true
+            noBasketLabel.isHidden = true
+            return
+        }
         
     }
     
@@ -90,6 +103,9 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
         let indexProduct = basket[indexPath.row]
         cell.infoProductBasket.text = indexProduct.productInfo
         cell.sumProductBasket.text = String(indexProduct.sumProduct)
+        cell.imageBasket.image = UIImage(data: indexProduct.image!)
+        cell.scoreProduct.setTitle(indexProduct.coll, for: .normal)
+        //indexProduct.image
 
         
         
@@ -119,6 +135,15 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
             }
             tableView.reloadData()
             totalSumProductLabel()
+            if basket.count <= 0 {
+                tableView.isHidden = true
+                noBasket.isHidden = false
+                noBasketLabel.isHidden = false
+            } else {
+                noBasket.isHidden = true
+                noBasketLabel.isHidden = true
+                return
+            }
             
             
         }

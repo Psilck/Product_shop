@@ -11,14 +11,15 @@ import CoreData
 
 class DetailProductViewController: UIViewController {
 
-    var nameProductDetail = "Name product"
-    var detailProductDetail = "Product detail info"
-    var cenaDetail = 105
-    var typeDetail = "kg"
-    var imageDelail = #imageLiteral(resourceName: "fish")
+    
+    
+    var detailName = ""
+    var detailProductInfo = ""
+    var detailSum = 0
+    var detailType = ""
+    var delailImage = UIImage()
     
     @IBOutlet weak var steperOutlet: UIStepper!
-    
     @IBOutlet weak var imageDetail: UIImageView!
     @IBOutlet weak var nameDetail: UILabel!
     @IBOutlet weak var detailProduct: UILabel!
@@ -33,16 +34,17 @@ class DetailProductViewController: UIViewController {
         
         steperOutlet.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         steperOutlet.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        imageDetail.image = delailImage
         //steperOutlet
             //= #imageLiteral(resourceName: "fish")
         
-        nameDetail.text = nameProductDetail
-        detailProduct.text = detailProductDetail
-        typeProduct.text = typeDetail
-        sumProduct.text = String(cenaDetail)
-        typeCenaDetail.text = typeDetail
+        nameDetail.text = detailName
+        detailProduct.text = detailProductInfo
+        typeProduct.text = detailType
+        sumProduct.text = String(detailSum)
+        typeCenaDetail.text = detailType
         sumDetail.text = "1"
-        totalSumProduct.text = String(cenaDetail)
+        totalSumProduct.text = String(detailSum)
         
     }
     
@@ -50,8 +52,10 @@ class DetailProductViewController: UIViewController {
         let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
         let basketSaveData = BasketProduct(context: context!)
             basketSaveData.name = nameDetail.text
-        basketSaveData.productInfo = detailProductDetail
+        basketSaveData.productInfo = detailProductInfo
         basketSaveData.sumProduct = Int16(totalSumProduct.text!)!
+        basketSaveData.image = UIImagePNGRepresentation(delailImage)
+        basketSaveData.coll = sumDetail.text
             do {
                 try context?.save()
                 print("save complete")
@@ -67,7 +71,7 @@ class DetailProductViewController: UIViewController {
         let text = String(plus)
         var totalText = text.components(separatedBy: ".")
         sumDetail.text = totalText[0]
-        let totalSum = String(cenaDetail * Int(totalText[0])!)
+        let totalSum = String(detailSum * Int(totalText[0])!)
         totalSumProduct.text = totalSum
         print(totalSum)
         
