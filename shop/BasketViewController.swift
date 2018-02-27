@@ -101,7 +101,7 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BasketTableViewCell
         
         let indexProduct = basket[indexPath.row]
-        cell.infoProductBasket.text = indexProduct.productInfo
+        cell.infoProductBasket.text = indexProduct.name
         cell.sumProductBasket.text = String(indexProduct.sumProduct)
         cell.imageBasket.image = UIImage(data: indexProduct.image!)
         cell.scoreProduct.setTitle(indexProduct.coll, for: .normal)

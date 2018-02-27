@@ -83,6 +83,7 @@ class ProductCollectionViewController: UICollectionViewController {
     
     
     let imageProduct = [#imageLiteral(resourceName: "Menu_image2"), #imageLiteral(resourceName: "Menu_image7"), #imageLiteral(resourceName: "Menu_image20"), #imageLiteral(resourceName: "Menu_image10"), #imageLiteral(resourceName: "Menu_image19"), #imageLiteral(resourceName: "Menu_image14"), #imageLiteral(resourceName: "Menu_image18"), #imageLiteral(resourceName: "Menu_image15"), #imageLiteral(resourceName: "Menu_image16"), #imageLiteral(resourceName: "Menu_image17")]
+    let nameProduct = ["Мясо", "Рыба", "Овощи", "Фрукты", "Консервы", "Макароны", "Приправы", "Хлеб", "Молоко", "Яйцо"]
     var product: [ProductListStruct] = [
         ProductListStruct(name: "", sum: 1, image: "Menu_image15.JPG", type: "", detailProduct: "123")]
     
@@ -108,6 +109,7 @@ class ProductCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ProductCollectionViewCell
         
         cell.imageProduct.image = imageProduct[indexPath.row]
+        cell.nameProduct.text = nameProduct[indexPath.row]
     
         return cell
     }
